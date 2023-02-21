@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+:root {
+    --background: #333;
+    --header-background: #141414;
+    --menu-color: white;
+    --inicio-background: #545560;
+    --box-contariner-background: #424566;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+    font-family: 'Work Sans', sans-serif;
+    font: 800;
+}
+
+.content {
+    height: 200vh;
+    background-blend-mode: multiply;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+}
+
+header {
+    top: 0;
+    background: var(--header-background);
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    position: absolute;
+    position: fixed;
+}
+
+header h2 {
+    color: white;
+    font-weight: bold;
+}
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--header-background);
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+    /*diplay: none;*/
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+nav a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+    color: black;
+}
+
+.nav-toggle:checked~nav {
+    transform: scale(1, 1); 
+}
+
+.nav-toggle:checked~nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+.nav-toggle {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: var(--menu-color);
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+.nav-toggle-label:hover {
+    --menu-color: black;
+}
+
+
+@media screen and (min-width: 800px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    }
+
+    .logo {
+        grid-column: 2 / 3;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+    }
+
+    nav li {
+        margin-left: 3em;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        opacity: 1;
+    }
+}
+
+.imagem-bonsai {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.sobre {
+    color: pink;
+    height: 100vh;
+}
+
+.menu-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0 0 0;
+}
+
+.form-cadastro {
+    margin-top: 50px;
+    border: white 1px solid;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 0 30px 30px 30px;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #484848;
+    box-shadow: rgba(0,0,0.35) 5px 5px 15px;
+}
+
+.form-cadastro>h1 {
+    text-align: center;
+}
+
+.form-cadastro label {
+    font-weight: bold;
+}
+
+.botao-cadastro {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+
+.botao-cadastro:hover {
+    opacity: 1;
+}
+
+.campo {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+    border: black 2px solid;
+    background-color: #ddd;
+    outline: none;
+}
+
+.campo:hover, .campo:focus {
+    background-color: #fff;
+    box-shadow: rgba(0,0,0.35) 5px 5px 15px;
+}
+
+hr {
+    width: 100%;
+}
+
+label {
+    color: white;
+}
+
+.titulo-cadastro {
+    color: white;
+}
+
+.error {
+    color: #ff4a4a;
+}

@@ -1,0 +1,13 @@
+RewriteEngine on
+
+
+# If you want to remove extension for single file
+# ######
+# RewriteRule ^index$ index.php [L]
+# ######
+# For remove all php file extension
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
