@@ -6,8 +6,14 @@
         $senha = filter_var($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS);
 
         if($email == "henriquericha@hotmail.com") {
-            $_SESSION['logado'] = true;
-            header("Location: menu");
+            $_SESSION['usuario_email'] = $email;
+            header("Location: menu.php");
+            exit;
+        }
+        elseif($email == "lucianaricha@uol.com.br") {
+            $_SESSION['usuario_email'] = $email;
+            header("Location: menu.php");
+            exit;
         } else {
             header('Location: login?erro=1');
         }

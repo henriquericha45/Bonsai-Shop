@@ -9,8 +9,6 @@ include "header.php";
     ?>
 </style>
 
-
-
 <div class="menu-cadastro">
     <form class="form-cadastro" action="valida_cadastro" method="post">
         <h1 class="titulo-cadastro"> Cadastro </h1>

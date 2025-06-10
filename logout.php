@@ -1,11 +1,7 @@
 <?php
 session_start();
-
-if(isset($_SESSION['logado'])) {
-    $_SESSION['logado'] = false;
-    header('Location: login');
-}
-
-
-
+session_unset(); // Remove todas as variáveis de sessão
+session_destroy(); // Destroi a sessão
+header('Location: login.php');
+exit;
 ?>
