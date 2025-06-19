@@ -16,5 +16,9 @@ class Conexao {
             die("Erro interno ao conectar ao banco de dados.");
         }
     }
+
+    public function fecharConexao(&$conn) {
+        $conn = null;
+    }
 }
 ?>
