@@ -1,23 +1,20 @@
 <?php
-
 class Conexao {
-
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
+    private $host = 'localhost';
+    private $dbname = 'BonsaiShop';
+    private $usuario = 'root';
+    private $senha = '';
 
     public function conectar() {
         try {
-            $conn = new PDO("mysql:host=$this->servername;dbname=BonsaiShop", $this->username, $this->password);
-            // set the PDO error mode to exception
+            $conn = new PDO("mysql:host={$this->host};dbname={$this->dbname};charset=utf8", $this->usuario, $this->senha);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            // Nunca exiba erros diretamente em produção
+            error_log("Erro na conexão: " . $e->getMessage());
+            die("Erro interno ao conectar ao banco de dados.");
         }
     }
-
-    public function fecharConexao($conn) {
-        $conn = null;
-    }
 }
+?>

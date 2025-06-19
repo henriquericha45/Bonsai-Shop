@@ -15,6 +15,10 @@
 }
 
 body {
+    background-color: white;
+}
+
+body {
     margin: 0;
     background-color: var(--background);
     font-family: 'Work Sans', sans-serif;
@@ -182,6 +186,7 @@ nav a:hover {
 }
 
 .sobre {
+    background-color: #292929cc;
     color: pink;
     height: 100vh;
 }
