@@ -27,7 +27,7 @@ function getTeste() {
 
         <?php
     }
-    $conn->fecharConexao($conn);
+    $conn = null;
 }
 
 //criarBonsai('Caliandra', 87.5);

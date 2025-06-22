@@ -1,13 +1,12 @@
-<script src="script/beforeUnload.js"></script>
 <?php
-session_start();
+require_once "redireciona_se_logado.php";
 include "header.php";
-
 ?>
 
+<script src="script/beforeUnload.js"></script>
+
 <style>
-    <?php include "style.css";
-    ?>
+    <?php include "style.css";?>
 </style>
 
 <div class="menu-cadastro">

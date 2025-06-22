@@ -21,7 +21,7 @@ class Teste {
             echo "<br>";
             echo $row['teste'] . " " . $row['testee'] . " " . $row['testeee'] . " " . $row['testeeee'];
         }
-        $this->conexao->fecharConexao($this->conn);
+        $conn = null;
     }
 }
 
