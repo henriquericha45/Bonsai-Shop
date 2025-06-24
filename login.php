@@ -14,16 +14,20 @@ include "header.php";
         <h1 class="titulo-cadastro"> Login </h1>
         <hr>
         <?php
-        if ($_GET['erro'] == 1) {
-            echo "<span class='error'> * Preencha todos os campos! </span>";
-        } else if ($_GET['erro'] == 1) {
-            echo "<span class='error'> * Senhas não conferem! </span>";
-        }
+            if (isset($_GET['erro'])) {
+                if ($_GET['erro'] == 1) {
+                    echo "<span class='error'> * Preencha todos os campos! </span>";
+                } else if ($_GET['erro'] == 2) {
+                    echo "<span class='error'> * Email não existe! </span>";
+                } else if ($_GET['erro'] == 3) {
+                    echo "<span class='error'> * Senha errada! </span>";
+                }
+            }
         ?>
         <label for="email"> Email </label>
-        <input class="campo" type="text" name="email" placeholder="Email" required>
+        <input class="campo" type="email" name="email" placeholder="Email" required>
         <label for="senha"> Senha </label>
-        <input class="campo" type="password" name="senha" placeholder="Senha" required>
+        <input class="campo" type="password" name="senha" placeholder="Senha" required autocomplete="off">
 
         <input class="botao-cadastro" type="submit" value="Logar">
     </form>
