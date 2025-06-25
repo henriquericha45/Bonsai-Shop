@@ -146,7 +146,7 @@ if (empty($_SESSION['carrinho'])) {
 <body>
     <h1 style="text-align: center; margin-top: 30px;">🛒 Itens no Carrinho</h1>
     <?php if (!empty($produtos)): ?>
-        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #2ecc71; padding: 16px; margin-top: -16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #2ecc71; padding: 0px 12px; margin-top: -16px;">
             <div style="color: white; font-weight: bold; font-size: 1.2rem;">
                 Total: 
                 R$ <?= number_format(array_sum(array: array_map(fn($p) => $p['preco'] * $_SESSION['carrinho'][$p['id_bonsai']], $produtos)), 2, ',', '.') ?>
