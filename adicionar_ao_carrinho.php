@@ -1,26 +1,36 @@
 <?php
 session_start();
 
-// Garante que o ID foi enviado
 if (!isset($_POST['id_bonsai'])) {
-    header("Location: index.php");
+    echo "ID do bonsai não fornecido.";
     exit;
 }
 
 $id = (int) $_POST['id_bonsai'];
 
-// Inicializa o carrinho se não existir
-if (!isset($_SESSION['carrinho'])) {
+require_once 'conexao.php';
+$conn = (new Conexao())->conectar();
+$stmt = $conn->prepare("SELECT quantidade FROM bonsai WHERE id_bonsai = ?");
+$stmt->execute([$id]);
+$estoque = $stmt->fetchColumn();
+
+if ($estoque === false) {
+    echo "Produto não encontrado.";
+    exit;
+}
+
+if (!isset($_SESSION['carrinho']) || !is_array($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
 
-// Se o produto já estiver no carrinho, aumenta a quantidade
-if (isset($_SESSION['carrinho'][$id])) {
-    $_SESSION['carrinho'][$id]++;
-} else {
-    $_SESSION['carrinho'][$id] = 1;
+$quantidadeAtual = $_SESSION['carrinho'][$id] ?? 0;
+
+if ($quantidadeAtual < $estoque) {
+    $_SESSION['carrinho'][$id] = $quantidadeAtual + 1;
 }
 
-// Redireciona de volta (ou para o carrinho se preferir)
-header("Location: menu.php");
+setcookie('carrinho', json_encode($_SESSION['carrinho']), time() + (86400 * 7), "/");
+
+$redirect = $_SERVER['HTTP_REFERER'] ?? 'menu.php';
+header("Location: " . $redirect);
 exit;

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['carrinho']) && isset($_COOKIE['carrinho'])) {
+    $_SESSION['carrinho'] = json_decode($_COOKIE['carrinho'], true);
+}
 ?>
 
 <head>

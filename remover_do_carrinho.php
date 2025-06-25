@@ -1,19 +1,24 @@
-
-
 <?php
 session_start();
 
-// Verifica se o ID foi enviado
 if (isset($_POST['id_bonsai'])) {
     $id = (int) $_POST['id_bonsai'];
 
-    // Se o item existir no carrinho, remove
     if (isset($_SESSION['carrinho'][$id])) {
-        unset($_SESSION['carrinho'][$id]);
+        if ($_SESSION['carrinho'][$id] > 1) {
+            $_SESSION['carrinho'][$id]--;
+        } else {
+            unset($_SESSION['carrinho'][$id]);
+        }
     }
+
+    setcookie(
+        'carrinho',
+        json_encode($_SESSION['carrinho']),
+        time() + (86400 * 7),
+        "/"
+    );
 }
 
-// Redireciona de volta para o carrinho
 header("Location: carrinho.php");
 exit;
-?>
